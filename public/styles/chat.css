@@ -1,0 +1,73 @@
+body{
+    overflow: hidden;
+}
+
+#message-input{
+    margin:5px auto;
+    height:96vh;
+    /* overflow-y: scroll; */
+    position: relative;
+}
+
+#message-input .info-section {
+    /* display: none; */
+    display:flex;
+    width:100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(245, 245, 245);
+    padding:5px 15px;
+}
+
+#message-input ul li {
+    list-style: none;
+}
+
+#message-input ul li fieldset,
+#message-input ul li  fieldset p{
+    width:250px;
+    overflow-wrap: break-word;
+}
+#message-input ul li fieldset {
+    margin:5px; 
+    text-align: left;
+    padding:0px;
+    border-radius: 8px;
+    border:none;
+    /* border:1px solid blue; */
+    background-color: rgb(242, 242, 242);
+}
+#message-input ul li fieldset legend {
+    font-size: 15px;
+    color:var(--bgc-primary);
+    font-weight:bold;
+} 
+
+#message-input ul {
+    height:92vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+#message-input .send-message{
+    width:340px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    /* position: fixed;
+    bottom:0px; */
+}
+
+#message-input .send-message input{
+    width:80%;
+    border:1px solid rgb(158, 158, 158);
+    background-color: white;
+}
+#message-input .send-message button {
+    width:20%;
+}
+
+#message span {
+    color:gray;
+    font-size: small;
+}

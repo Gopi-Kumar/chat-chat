@@ -1,0 +1,20 @@
+:root{
+    --bgc-primary : rgb(156, 14, 192);
+    --primary-text:rgb(14, 14, 14);
+    --bgc-secondry : rgb(94, 199, 65);
+}
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&family=Righteous&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width:100vw;
+    height:100vh;
+    background: rgb(249,128,110);
+    background: radial-gradient(ci, rgba(249,128,110,1) 0%, rgba(217,203,212,1) 45%, rgba(173,31,244,1) 99%);
+    
+}

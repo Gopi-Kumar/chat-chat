@@ -3,7 +3,6 @@
 require('dotenv').config();
 const express = require('express');
 const myDB = require('./connection');
-const fccTesting = require('./freeCodeCamp/fcctesting.js');
 const session = require('express-session');
 const passport = require('passport');
 const routes = require('./routes');
@@ -20,7 +19,6 @@ const MongoStore = require('connect-mongo');
 
 app.set('view engine', 'pug');
 
-fccTesting(app); //For FCC testing purposes
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -88,7 +86,6 @@ myDB(async (client) => {
 
 function onAuthorizeSuccess(data, accept) {
   console.log('successful connection to socket.io');
-
   accept(null, true);
 }
 

@@ -11,7 +11,7 @@ module.exports = function(app, myDataBase) {
     });
   });
   app.route('/login').post(passport.authenticate('local', { failureRedirect: '/' }), (req, res) => {
-    res.redirect('/profile');
+    res.redirect('/chat');
   });
   app.route('/chat').get(ensureAuthenticated, (req, res) => {
     res.render('pug/chat', { user: req.user });
@@ -44,7 +44,7 @@ module.exports = function(app, myDataBase) {
     },
     passport.authenticate('local', { failureRedirect: '/' }),
     (req, res, next) => {
-      res.redirect('/profile');
+      res.redirect('/chat');
     }
   );
 

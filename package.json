@@ -1,5 +1,5 @@
 {
-  "name": "fcc-advanced-node-and-express",
+  "name": "chat-chat",
   "author": "http://github.com/JosephLivengood",
   "version": "0.0.1",
   "description": "What am I about?",
@@ -11,6 +11,7 @@
   "dependencies": {
     "bcrypt": "5.0.0",
     "body-parser": "^1.19.1",
+    "bytes": "^3.1.2",
     "connect-mongo": "^4.6.0",
     "connect-mongodb-session": "^3.1.1",
     "cookie-parser": "^1.4.6",
@@ -25,7 +26,10 @@
     "passport-local": "1.0.0",
     "passport.socketio": "^3.7.0",
     "pug": "3.0.0",
-    "socket.io": "^4.4.1"
+    "socket.io": "^4.4.1",
+    "string-width": "^5.1.0",
+    "undefsafe": "^2.0.5",
+    "xdg-basedir": "^5.1.0"
   },
   "repository": {
     "type": "git",
@@ -38,10 +42,6 @@
     "passport",
     "socketio"
   ],
-  "engines": {
-    "node": "14.x",
-    "npm": "8.x"
-  },
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^2.0.4"

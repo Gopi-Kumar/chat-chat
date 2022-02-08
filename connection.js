@@ -7,14 +7,12 @@ async function main(callback) {
     const client = new MongoClient(URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
     try {
-        // Connect to the MongoDB cluster
+
         await client.connect();
-        // Make the appropriate DB calls
         await callback(client);
 
     } catch (e) {
-        // Catch any errors
-        console.error(e);
+        console.error("Database Error: ", e);
         throw new Error('Unable to Connect to Database')
     }
 }

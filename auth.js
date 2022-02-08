@@ -2,7 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
 const ObjectID = require('mongodb').ObjectID;
-const GitHubStrategy = require('passport-github').Strategy;
+// const GitHubStrategy = require('passport-github').Strategy;
 
 module.exports = function (app, myDataBase) {
   passport.serializeUser((user, done) => {
@@ -26,37 +26,37 @@ module.exports = function (app, myDataBase) {
     }
   ));
 
-  passport.use(new GitHubStrategy({
-      clientID: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: 'https://boilerplate-advancednode-7.gopikumar1.repl.co/auth/github/callback'
-    },
-    function (accessToken, refreshToken, profile, cb) {
-      myDataBase.findAndModify(
-        { id: profile.id },
-        {},
-        {
-          $setOnInsert: {
-            id: profile.id,
-            username: profile.displayName || 'John Doe',
-            photo: profile.photos[0].value || '',
-            email: Array.isArray(profile.emails) ? profile.emails[0].value : 'No public email',
-            created_on: new Date(),
-            provider: profile.provider || ''
-          },
-          $set: {
-            last_login: new Date()
-          },
-          $inc: {
-            login_count: 1
-          }
-        },
-        { upsert: true, new: true },
-        (err, doc) => {
-          console.log("error while createing with github ", err)
-          return cb(null, doc.value);
-        }
-      );
-    }
-  ));
+  // passport.use(new GitHubStrategy({
+  //     clientID: process.env.GITHUB_CLIENT_ID,
+  //     clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  //     callbackURL: 'https://boilerplate-advancednode-7.gopikumar1.repl.co/auth/github/callback'
+  //   },
+  //   function (accessToken, refreshToken, profile, cb) {
+  //     myDataBase.findAndModify(
+  //       { id: profile.id },
+  //       {},
+  //       {
+  //         $setOnInsert: {
+  //           id: profile.id,
+  //           username: profile.displayName || 'John Doe',
+  //           photo: profile.photos[0].value || '',
+  //           email: Array.isArray(profile.emails) ? profile.emails[0].value : 'No public email',
+  //           created_on: new Date(),
+  //           provider: profile.provider || ''
+  //         },
+  //         $set: {
+  //           last_login: new Date()
+  //         },
+  //         $inc: {
+  //           login_count: 1
+  //         }
+  //       },
+  //       { upsert: true, new: true },
+  //       (err, doc) => {
+  //         console.log("error while createing with github ", err)
+  //         return cb(null, doc.value);
+  //       }
+  //     );
+  //   }
+  // ));
 };

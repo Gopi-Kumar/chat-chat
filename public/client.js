@@ -1,21 +1,20 @@
 $(document).ready(function () {
   /* Global io */
   let socket = io();
-
   socket.on('user', (data) => {
-    $('#num-users').text(data.currentUsers + ' users online');
-    let message = data.name + (data.connected ? ' has joined the chat.' : ' has left the chat.');
-    $('#messages').append($('<li>').html('<b>' + message + '</b>'));
+    $('#num-users').text(data.currentUsers + ' online');
+    // let message = data.name + (data.connected ? ' has joined the chat.' : ' has left the chat.');
+    // $('#messages').append($('<li>').html('<b>' + message + '</b>'));
   });
-
+  
   socket.on('chat message', (data) => {
-    console.log('socket.on 1');
-    $('#messages').append($('<li>').text(`${data.name}: ${data.message}`));
+    $('#messages').append($('<li>').html(`<fieldset><legend>${data.name}</legend><p>${data.message}</p></fieldset>`));
   });
 
   // Form submittion with new message in field with id 'm'
   $('form').submit(function () {
     let messageToSend = $('#m').val();
+    if(messageToSend.trim() == "") return;
     // Send message to server here?
     socket.emit('chat message', messageToSend);
     $('#m').val('');
